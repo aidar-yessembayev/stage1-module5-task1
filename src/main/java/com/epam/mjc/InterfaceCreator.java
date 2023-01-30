@@ -14,13 +14,16 @@ public class InterfaceCreator {
 
     public Predicate<List<String>> isValuesStartWithUpperCase() {
         return x -> {
+            if (x.size() > 0) {
 
-            for (int i = 0; i < x.size(); i++) {
-                String word = x.get(i);
+                for (int i = 0; i < x.size(); i++) {
+                    String word = x.get(i);
 
-                if (!(word.equals(word.toUpperCase()))) {
-                    return false;
+                    if (!(word.equals(word.toUpperCase()))) {
+                        return false;
+                    }
                 }
+
             }
 
             return true;
@@ -29,15 +32,17 @@ public class InterfaceCreator {
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
         return x -> {
+            if (x.size() > 0) {
+                int size = x.size();
 
-            for (int i = 0; i < x.size(); i++) {
-                int value = x.get(i);
+                for (int i = 0; i < size; i++) {
+                    int value = x.get(i);
 
-                if (value % 2 == 0) {
-                    x.add(value);
+                    if (value % 2 == 0) {
+                        x.add(value);
+                    }
                 }
             }
-
         };
     }
 
@@ -49,6 +54,8 @@ public class InterfaceCreator {
 
                 for (int i = 0; i < values.size(); i++) {
                     String sentence = values.get(i);
+
+                    System.out.println(i + " : " + sentence);
 
                     if (sentence.equals(sentence.toUpperCase()) && sentence.endsWith(".")) {
                         String[] words = sentence.split(" ");
